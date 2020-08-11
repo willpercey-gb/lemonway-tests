@@ -27,4 +27,5 @@ function export($value, $path = __DIR__ . '/exported.php')
 }
 
 $app = new Application();
+$app->add((new DocumentUpload()));
 $app->run();
