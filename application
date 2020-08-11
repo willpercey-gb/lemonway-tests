@@ -9,7 +9,7 @@ define('LEMONWAY_URI', 'https://ws.lemonway.fr/mb/{account}/prod/directkitjson2/
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-(Dotenv::createImmutable(dirname(__FILE__)))->load();
+(Dotenv::createImmutable(__DIR__))->load();
 
 (new \NunoMaduro\Collision\Provider)->register();
 
@@ -25,6 +25,7 @@ function export($value, $path = __DIR__ . '/exported.php')
 {
     file_put_contents($path, VarExporter::export($value));
 }
+
 
 $app = new Application();
 $app->add((new DocumentUpload()));
