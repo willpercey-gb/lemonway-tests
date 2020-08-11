@@ -1,0 +1,20 @@
+{
+  "require": {
+    "symfony/var-dumper": "^5.1",
+    "symfony/console": "^5.1",
+    "nunomaduro/collision": "^4.2",
+    "vlucas/phpdotenv": "^5.1",
+    "ext-json": "*",
+    "symfony/http-client": "^5.1",
+    "uwebpro/substring": "^2.0",
+    "symfony/var-exporter": "^5.1"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "Tests\\": "Test"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+<?php
+
+use Dotenv\Dotenv;
+use Symfony\Component\Console\Application;
+use Symfony\Component\VarExporter\VarExporter;
+use Tests\DocumentUpload;
+
+define('LEMONWAY_URI', 'https://ws.lemonway.fr/mb/{account}/prod/directkitjson2/service.asmx');
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+(Dotenv::createImmutable(dirname(__FILE__)))->load();
+
+(new \NunoMaduro\Collision\Provider)->register();
+
+function getRequestUri($endpoint = '/'): string
+{
+    return substring(LEMONWAY_URI, '', '{')
+        . $_ENV['ACCOUNT']
+        . substring(LEMONWAY_URI, '}')
+        . $endpoint;
+}
+
+function export($value, $path = __DIR__ . '/exported.php')
+{
+    file_put_contents($path, VarExporter::export($value));
+}
+
+$app = new Application();
+$app->run();
